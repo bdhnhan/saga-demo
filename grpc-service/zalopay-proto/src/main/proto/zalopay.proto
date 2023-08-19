@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option java_package = "com.example.protobuf";
+
+service ZalopayService {
+  rpc commitInBalance(CommitInBalanceRequest) returns (CommitInBalanceResponse);
+  rpc redoInBalance(RedoInBalanceRequest) returns (RedoInBalanceResponse);
+}
+
+
+message CommitInBalanceRequest {
+  string transactionId = 1;
+  int64 amount = 2;
+  string userId = 3;
+}
+
+message CommitInBalanceResponse {
+  string status = 1;
+}
+
+message RedoInBalanceRequest {
+  string transactionId = 1;
+}
+
+message RedoInBalanceResponse {
+  string status = 1;
+}
